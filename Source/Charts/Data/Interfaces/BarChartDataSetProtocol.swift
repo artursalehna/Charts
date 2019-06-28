@@ -47,4 +47,6 @@ public protocol BarChartDataSetProtocol: BarLineScatterCandleBubbleChartDataSetP
     var gradientStart: CGPoint { get set }
 
     var gradientEnd: CGPoint { get set }
+    
+    var cornerRadius: Double { get set }
 }

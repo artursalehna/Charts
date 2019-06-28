@@ -142,6 +142,7 @@ class BarChartViewController: DemoBaseViewController {
     }
 
     private func setup(_ dataSet: BarChartDataSet) {
+        dataSet.cornerRadius = 5
         if dataSet.drawBarGradientEnabled {
             dataSet.colors = [.black, .red, .white]
             dataSet.gradientPositions = [0, 40, 100]

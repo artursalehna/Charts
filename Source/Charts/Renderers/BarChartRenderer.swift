@@ -378,7 +378,16 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
             guard viewPortHandler.isInBoundsRight(barRect.minX) else { break }
 
             context.beginPath()
-            context.addRect(barRect)
+            
+            if dataSet.cornerRadius > 0 {
+                let path = UIBezierPath(roundedRect: barRect,
+                                        byRoundingCorners: [.topLeft, .topRight],
+                                        cornerRadii: CGSize(width: 5, height: 5))
+                context.addPath(path.cgPath)
+            } else {
+                context.addRect(barRect)
+            }
+            
             context.clip()
             context.drawLinearGradient(gradient, start: gradientStart, end: gradientEnd, options: [])
 
@@ -421,7 +430,15 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
                 context.setFillColor(dataSet.color(atIndex: j).cgColor)
             }
 
-            context.fill(barRect)
+            if dataSet.cornerRadius > 0 {
+                let path = UIBezierPath(roundedRect: barRect,
+                                        byRoundingCorners: [.topLeft, .topRight],
+                                        cornerRadii: CGSize(width: 5, height: 5))
+                context.addPath(path.cgPath)
+                context.drawPath(using: .fill)
+            } else {
+                context.fill(barRect)
+            }
 
             if drawBorder
             {
@@ -787,7 +804,15 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
                 
                 setHighlightDrawPos(highlight: high, barRect: barRect)
                 
-                context.fill(barRect)
+                if set.cornerRadius > 0 {
+                    let path = UIBezierPath(roundedRect: barRect,
+                                            byRoundingCorners: [.topLeft, .topRight],
+                                            cornerRadii: CGSize(width: 5, height: 5))
+                    context.addPath(path.cgPath)
+                    context.drawPath(using: .fill)
+                } else {
+                    context.fill(barRect)
+                }
             }
         }
     }
