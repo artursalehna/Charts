@@ -383,7 +383,7 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
                 #if !os(OSX)
                 let path = UIBezierPath(roundedRect: barRect,
                                         byRoundingCorners: [.topLeft, .topRight],
-                                        cornerRadii: CGSize(width: 5, height: 5))
+                                        cornerRadii: CGSize(width: dataSet.cornerRadius, height: dataSet.cornerRadius))
                 context.addPath(path.cgPath)
                 #endif
             } else {
@@ -436,7 +436,7 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
                 #if !os(OSX)
                 let path = UIBezierPath(roundedRect: barRect,
                                         byRoundingCorners: [.topLeft, .topRight],
-                                        cornerRadii: CGSize(width: 5, height: 5))
+                                        cornerRadii: CGSize(width: dataSet.cornerRadius, height: dataSet.cornerRadius))
                 context.addPath(path.cgPath)
                 context.drawPath(using: .fill)
                 #endif
@@ -812,7 +812,7 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
                     #if !os(OSX)
                     let path = UIBezierPath(roundedRect: barRect,
                                             byRoundingCorners: [.topLeft, .topRight],
-                                            cornerRadii: CGSize(width: 5, height: 5))
+                                            cornerRadii: CGSize(width: set.cornerRadius, height: set.cornerRadius))
                     context.addPath(path.cgPath)
                     context.drawPath(using: .fill)
                     #endif
