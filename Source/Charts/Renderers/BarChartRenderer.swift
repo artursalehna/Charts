@@ -385,7 +385,6 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
                                         byRoundingCorners: [.topLeft, .topRight],
                                         cornerRadii: CGSize(width: 5, height: 5))
                 context.addPath(path.cgPath)
-                context.drawPath(using: .fill)
                 #endif
             } else {
                 context.addRect(barRect)
