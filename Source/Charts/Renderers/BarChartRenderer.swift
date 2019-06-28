@@ -380,10 +380,13 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
             context.beginPath()
             
             if dataSet.cornerRadius > 0 {
+                #if !os(OSX)
                 let path = UIBezierPath(roundedRect: barRect,
                                         byRoundingCorners: [.topLeft, .topRight],
                                         cornerRadii: CGSize(width: 5, height: 5))
                 context.addPath(path.cgPath)
+                context.drawPath(using: .fill)
+                #endif
             } else {
                 context.addRect(barRect)
             }
@@ -431,11 +434,13 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
             }
 
             if dataSet.cornerRadius > 0 {
+                #if !os(OSX)
                 let path = UIBezierPath(roundedRect: barRect,
                                         byRoundingCorners: [.topLeft, .topRight],
                                         cornerRadii: CGSize(width: 5, height: 5))
                 context.addPath(path.cgPath)
                 context.drawPath(using: .fill)
+                #endif
             } else {
                 context.fill(barRect)
             }
@@ -805,11 +810,13 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
                 setHighlightDrawPos(highlight: high, barRect: barRect)
                 
                 if set.cornerRadius > 0 {
+                    #if !os(OSX)
                     let path = UIBezierPath(roundedRect: barRect,
                                             byRoundingCorners: [.topLeft, .topRight],
                                             cornerRadii: CGSize(width: 5, height: 5))
                     context.addPath(path.cgPath)
                     context.drawPath(using: .fill)
+                    #endif
                 } else {
                     context.fill(barRect)
                 }
